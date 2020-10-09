@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import useDispatch from 'react-redux';
+import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+import englishWiseApi from '../services/englishWiseApi';
 
 const LoginPage = props => {
   const dispatch = useDispatch();
@@ -15,10 +17,13 @@ const LoginPage = props => {
     }
   };
 
-  // const handleSubmit = async e => {
-  //   e.preventDefault();
-  //   const response = await
-  // };
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const { userLogin } = props;
+    dispatch(englishWiseApi.userLogin(email, password).then(user => {
+      userLogin(user);
+    }));
+  };
 
   return (
     <div className="login">
@@ -26,16 +31,20 @@ const LoginPage = props => {
       <form className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="email">
           Email:
-          <input id="email-input" type="text" onChange={handleChange} />
+          <input id="email-input" type="text" value={email} onChange={handleChange} />
         </label>
         <label htmlFor="password">
           Password:
-          <input id="password-input" type="password" onChange={handleChange} />
+          <input id="password-input" type="password" value={password} onChange={handleChange} />
         </label>
         <input type="submit" />
       </form>
     </div>
   );
+};
+
+LoginPage.propTypes = {
+  userLogin: PropTypes.func.isRequired,
 };
 
 export default LoginPage;
