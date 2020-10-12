@@ -1,4 +1,5 @@
 const baseUrl = 'https://nriqu322-english-wise-netlify.net';
+const baseUrl = 'localhost:3001'
 
 const englishWiseApi = () => {
   const userLogin = async props => {
@@ -11,7 +12,7 @@ const englishWiseApi = () => {
       body: JSON.stringify(email, password),
     };
     try {
-      const response = await fetch(`${baseUrl}/users/login`, config);
+      const response = await fetch(`${baseUrl}/login`, config);
       const data = await response.json();
       return data;
     } catch (e) {
@@ -30,7 +31,7 @@ const englishWiseApi = () => {
       body: JSON.stringify(user),
     };
     try {
-      const response = await fetch(`${baseUrl}/users/signup`, config);
+      const response = await fetch(`${baseUrl}/signup`, config);
       const data = await response.json();
       return data;
     } catch (e) {
