@@ -20,8 +20,9 @@ const LoginPage = props => {
   const handleSubmit = async e => {
     e.preventDefault();
     const { userLogin } = props;
-    dispatch(englishWiseApi.userLogin(email, password).then(user => {
-      userLogin(user);
+    dispatch(englishWiseApi.userLogin(email, password).then(data => {
+      userLogin(data.user);
+      localStorage.setItem('token', data.token);
     }));
   };
 
