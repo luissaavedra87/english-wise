@@ -1,5 +1,5 @@
-const baseUrl = 'https://nriqu322-english-wise-netlify.net';
-const baseUrl = 'localhost:3001'
+// const baseUrl = 'https://nriqu322-english-wise-netlify.net';
+const baseUrl = 'localhost:3001';
 
 const englishWiseApi = () => {
   const userLogin = async props => {
@@ -41,7 +41,19 @@ const englishWiseApi = () => {
     }
   };
 
-  return { userLogin, userSignup };
+  const userSession = async token => {
+    const config = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const response = await fetch(`${baseUrl}/session`, config);
+    const data = await response.json();
+    return data;
+  };
+
+  return { userLogin, userSignup, userSession };
 };
 
 export default englishWiseApi;

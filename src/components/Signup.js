@@ -66,7 +66,7 @@ const SignupPage = props => {
           Password Confirmation:
           <input id="password-conf-input" name="password-conf-input" type="password" value={passwordConf} onChange={handleChange} />
         </label>
-        <input type="submit" />
+        <input type="submit" value="SignUp" />
       </form>
     </div>
   );

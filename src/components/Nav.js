@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { useDispatch } from 'react-redux';
 
 const Nav = props => {
-  const { user, logout } = props;
-  // const dispatch = useDispatch();
+  const { user, logout, loggedIn } = props;
+  const dispatch = useDispatch();
+
   const handleLogout = () => {
-    logout();
+    dispatch(logout());
     localStorage.clear();
   };
 
-  if (user.logged) {
+  if (loggedIn) {
     return (
       <nav>
         <div className="logo-container">
@@ -24,6 +25,12 @@ const Nav = props => {
             <button type="button">{user.username.split(' ')[0]}</button>
           </Link>
           <Link to="/login">
+            <button type="button">Login</button>
+          </Link>
+          <Link to="/signup">
+            <button type="button">Signup</button>
+          </Link>
+          <Link to="/">
             <button type="button" onClick={handleLogout}>Logout</button>
           </Link>
         </div>
@@ -51,6 +58,7 @@ const Nav = props => {
 };
 
 Nav.propTypes = {
+  loggedIn: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
   user: PropTypes.shape({
     logged: PropTypes.bool,

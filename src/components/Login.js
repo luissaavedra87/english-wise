@@ -38,7 +38,7 @@ const LoginPage = props => {
           Password:
           <input id="password-input" type="password" value={password} onChange={handleChange} />
         </label>
-        <input type="submit" />
+        <input type="submit" value="Login" />
       </form>
     </div>
   );
