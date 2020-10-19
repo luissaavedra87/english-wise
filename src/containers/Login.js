@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import englishWiseApi from '../services/englishWiseApi';
+// import englishWiseApi from '../services/englishWiseApi';
+import { userLogin } from '../services/englishWiseApi';
+import { setToken } from '../helpers/authHelper';
 
-const LoginPage = props => {
-  const dispatch = useDispatch();
+const Login = props => {
+  // const dispatch = useDispatch();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -19,11 +21,12 @@ const LoginPage = props => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const { userLogin } = props;
-    dispatch(englishWiseApi.userLogin(email, password).then(data => {
+    userLogin(email, password).then(data => {
+      console.log(data.user);
+      const { userLogin } = props;
       userLogin(data.user);
-      localStorage.setItem('token', data.token);
-    }));
+      setToken(data.user);
+    });
   };
 
   return (
@@ -32,11 +35,11 @@ const LoginPage = props => {
       <form className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="email">
           Email:
-          <input id="email-input" type="text" value={email} onChange={handleChange} />
+          <input id="email-input" type="text" onChange={handleChange} />
         </label>
         <label htmlFor="password">
           Password:
-          <input id="password-input" type="password" value={password} onChange={handleChange} />
+          <input id="password-input" type="password" onChange={handleChange} />
         </label>
         <input type="submit" value="Login" />
       </form>
@@ -44,8 +47,8 @@ const LoginPage = props => {
   );
 };
 
-LoginPage.propTypes = {
+Login.propTypes = {
   userLogin: PropTypes.func.isRequired,
 };
 
-export default LoginPage;
+export default Login;

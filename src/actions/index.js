@@ -8,12 +8,12 @@ const newUser = user => ({
   user,
 });
 
-const login = user => ({
+const userLogin = user => ({
   type: LOGIN,
   user,
 });
 
-const logout = () => ({
+const userLogout = () => ({
   type: LOGOUT,
 });
 
@@ -23,6 +23,6 @@ const sessionUser = user => ({
 });
 
 export {
-  newUser, login, logout, sessionUser,
+  newUser, userLogin, userLogout, sessionUser,
   LOGIN, LOGOUT, SESSION, NEW_USER,
 };

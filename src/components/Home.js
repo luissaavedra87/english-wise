@@ -1,11 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
-const Home = () => {
-  const username = useSelector(state => state.username);
-  const text = username ? (
+const Home = user => {
+  const text = user ? (
     <h1>
-      {username}
+      {user.username}
       , welcome back to English Wise
     </h1>
   ) : (
@@ -16,6 +15,7 @@ const Home = () => {
     <div className="home">
       <div>{text}</div>
       <img src="./resources/teacher-salon.jpg" alt="teacher-salon" />
+      <h2>You are not logged in</h2>
       <div>
         If you are looking for a personal learning,&nbsp;
         search between our teachers and schedule a class.

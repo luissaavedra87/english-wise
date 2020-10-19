@@ -1,15 +1,32 @@
-const TOKEN_KEY = 'token';
+// import englishWiseApi from '../services/englishWiseApi';
+import { userSession } from '../services/englishWiseApi';
+
+const USER_TOKEN = 'userToken';
 
 const setToken = token => {
-  localStorage.setItem(TOKEN_KEY, token);
+  localStorage.setItem(USER_TOKEN, token);
 };
 
-const getToken = () => (localStorage.getItem(TOKEN_KEY));
+const getToken = () => (localStorage.getItem(USER_TOKEN));
 
-const deleteToken = () => (localStorage.removeItem(TOKEN_KEY));
+const deleteToken = () => (localStorage.removeItem(USER_TOKEN));
 
-const validLogin = () => {
-  
-}
+const validSession = (user, userLogin) => {
+  let loggedIn = false;
+  if (Object.keys(user).length === 0) {
+    const user = getToken();
 
-export { setToken, getToken, deleteToken };
+    if (user && user !== undefined && user !== 'undefined') {
+      userSession(user.token).then(data => {
+        setToken(data.token);
+        userLogin(data);
+      });
+      loggedIn = true;
+    }
+  }
+  return loggedIn;
+};
+
+export {
+  setToken, getToken, deleteToken, validSession,
+};

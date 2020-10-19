@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { deleteToken } from '../helpers/authHelper';
 
 const Nav = props => {
   const { user, logout, loggedIn } = props;
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logout());
-    localStorage.clear();
+    // dispatch(logout());
+    logout();
+    deleteToken();
   };
 
   if (loggedIn) {
@@ -22,13 +24,11 @@ const Nav = props => {
         </div>
         <div>
           <Link to="/">
-            <button type="button">{user.username.split(' ')[0]}</button>
-          </Link>
-          <Link to="/login">
-            <button type="button">Login</button>
-          </Link>
-          <Link to="/signup">
-            <button type="button">Signup</button>
+            <button type="button">
+              User
+              {user.username}
+              {/* {user.username.split(' ')[0]} */}
+            </button>
           </Link>
           <Link to="/">
             <button type="button" onClick={handleLogout}>Logout</button>
