@@ -48,7 +48,7 @@ const SignupForm = props => {
           console.log(data);
           console.log(data.user);
           addFlashMessage({
-            type: 'success',
+            // type: 'success',
             text: 'You signed up succesfully. Welcome!',
           });
           history.push('/login');

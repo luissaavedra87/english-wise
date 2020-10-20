@@ -2,13 +2,15 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from './Nav';
+import FlashMessagesList from './flash/FlashMessagesList';
 import Home from './Home';
 import Login from '../containers/Login';
 import SignupPage from '../containers/Signup';
 import { userLogin, userLogout } from '../actions/index';
 import {
-  deleteToken, setToken, validSession,
+  deleteToken, setToken,
 } from '../helpers/authHelper';
 
 class App extends React.Component {
@@ -80,15 +82,13 @@ class App extends React.Component {
     return (
       <Router>
         <Nav user={user} loggedIn={loggedIn} logout={this.setLogout} />
+        <FlashMessagesList />
         <Switch>
           <Route
             exact
             path="/"
-            render={props => (
-              <Home
-                {...props}
-                user={user}
-              />
+            render={() => (
+              <Home user={user} />
             )}
             // user={user}
             // component={Home}
@@ -123,8 +123,8 @@ const mapDispatchToProps = dispatch => ({
 App.propTypes = {
   user: PropTypes.objectOf(PropTypes.any).isRequired,
   loggedIn: PropTypes.bool.isRequired,
-  setLogin: PropTypes.func.isRequired,
-  setLogout: PropTypes.func.isRequired,
+  // setLogin: PropTypes.func.isRequired,
+  // setLogout: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
