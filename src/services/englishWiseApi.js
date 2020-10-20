@@ -15,9 +15,9 @@ const userLogin = async props => {
     const response = await fetch(`${baseUrl}/login`, config);
     const data = await response.json();
     return data;
-  } catch (e) {
+  } catch (error) {
     return {
-      error: e.message,
+      error: error.message,
     };
   }
 };
@@ -34,9 +34,9 @@ const userSignup = async user => {
     const response = await fetch(`${baseUrl}/signup`, config);
     const data = await response.json();
     return data;
-  } catch (e) {
+  } catch (error) {
     return {
-      error: e.message,
+      error: error.message,
     };
   }
 };

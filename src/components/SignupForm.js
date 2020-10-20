@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import { PropTypes } from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { userSignup } from '../services/englishWiseApi';
 import { setToken } from '../helpers/authHelper';
-// import englishWiseApi from '../services/englishWiseApi';
 
 const SignupForm = props => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState();
   const [passwordConf, setPasswordConf] = useState();
+  const [error, setError] = useState([]);
 
   const history = useHistory();
 
@@ -36,25 +37,35 @@ const SignupForm = props => {
       password_confirmation: passwordConf,
     };
 
+    const { addFlashMessage } = props;
+
     userSignup(newUser)
       .then(data => {
         // const { userLogin } = props;
         // userLogin(data);
         setToken(data.token);
-        if (data.token) {
+        if (data.token && data.token !== undefined) {
           console.log(data);
           console.log(data.user);
+          addFlashMessage({
+            type: 'success',
+            text: 'You signed up succesfully. Welcome!',
+          });
           history.push('/login');
         }
       })
       .catch(error => {
-        console.log('signup error', error);
-        history.push('/signup');
+        setError(error);
+        console.log(error);
+        // history.push('/signup');
       });
   };
 
+  const renderErrors = error.map(err => <span key={err}>{err}</span>);
+
   return (
     <form className="signup-form" onSubmit={handleSubmit}>
+      <div>{renderErrors}</div>
       <label htmlFor="username">
         Username:
         <input id="username-input" name="username" type="text" onChange={handleChange} required />
@@ -74,6 +85,10 @@ const SignupForm = props => {
       <input type="submit" value="SignUp" />
     </form>
   );
+};
+
+SignupForm.propTypes = {
+  addFlashMessage: PropTypes.func.isRequired,
 };
 
 export default SignupForm;
