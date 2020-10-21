@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deleteToken } from '../helpers/authHelper';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Nav = props => {
   const { user, logout, loggedIn } = props;
@@ -16,7 +17,7 @@ const Nav = props => {
 
   if (loggedIn) {
     return (
-      <nav>
+      <nav className="nav navbar">
         <div className="logo-container">
           <Link to="/">
             <img src="./resources/english-logo.jpg" alt="title" />
@@ -39,7 +40,7 @@ const Nav = props => {
   }
 
   return (
-    <nav>
+    <nav className="nav navbar">
       <div className="logo-container">
         <Link to="/">
           <img src="./resources/english-logo.jpg" alt="title" />

@@ -47,15 +47,16 @@ const SignupForm = props => {
         if (data.token && data.token !== undefined) {
           console.log(data);
           console.log(data.user);
-          addFlashMessage({
+          addFlashMessage(
             // type: 'success',
-            text: 'You signed up succesfully. Welcome!',
-          });
+            'You signed up succesfully. Welcome!',
+          );
           history.push('/login');
         }
       })
       .catch(error => {
         setError(error);
+        addFlashMessage('There is an error, please try again');
         console.log(error);
         // history.push('/signup');
       });

@@ -7,9 +7,14 @@ import { addFlashMessage } from '../actions';
 const SignupPage = props => {
   const { addFlashMessage } = props;
   return (
-    <div className="signup">
+    <div className="signup text-center">
       <h1>Signup</h1>
-      <SignupForm addFlashMessage={addFlashMessage} />
+      <div className="row d-flex">
+        <div className="col-4 col-offset-4 mx-auto">
+          <SignupForm addFlashMessage={addFlashMessage} />
+        </div>
+      </div>
+
     </div>
   );
 };

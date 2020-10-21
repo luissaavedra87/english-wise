@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 // import englishWiseApi from '../services/englishWiseApi';
 import { userLogin } from '../services/englishWiseApi';
 import { setToken } from '../helpers/authHelper';
+import LoginForm from '../components/LoginForm';
 
 const Login = props => {
   // const dispatch = useDispatch();
@@ -32,17 +33,22 @@ const Login = props => {
   return (
     <div className="login">
       <h1>Login</h1>
-      <form className="login-form" onSubmit={handleSubmit}>
-        <label htmlFor="email">
-          Email:
-          <input id="email-input" type="text" onChange={handleChange} />
-        </label>
-        <label htmlFor="password">
-          Password:
-          <input id="password-input" type="password" onChange={handleChange} />
-        </label>
-        <input type="submit" value="Login" />
-      </form>
+      <div className="row">
+        <div className="col-4 col-offset-4 mx-auto">
+          <LoginForm />
+        </div>
+        <form className="login-form " onSubmit={handleSubmit}>
+          <label htmlFor="email">
+            Email:
+            <input id="email-input" type="text" onChange={handleChange} required />
+          </label>
+          <label htmlFor="password">
+            Password:
+            <input id="password-input" type="password" onChange={handleChange} required />
+          </label>
+          <input type="submit" value="Login" />
+        </form>
+      </div>
     </div>
   );
 };

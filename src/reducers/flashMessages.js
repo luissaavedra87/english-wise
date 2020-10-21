@@ -8,9 +8,9 @@ const flashMessages = (state = [], action) => {
       // return [
       //   ...state,
       //   {
+      //     text: action.message.text,
       //     id: shortid.generate(),
       //     type: action.message.type,
-      //     text: action.message.text,
       //   },
       // ];
     case DELETE_FLASH_MESSAGE:

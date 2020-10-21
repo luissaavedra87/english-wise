@@ -1,20 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import FlashMessage from './FlashMessage';
-import { deleteFlashMessage } from '../../actions';
+import FlashMessage from '../components/FlashMessage';
+import { deleteFlashMessage } from '../actions';
 
 const FlashMessagesList = props => {
   const { messages, deleteFlashMessage } = props;
-  messages.map(
-    message => (
+  messages
+    .map((message, index) => (
       <FlashMessage
-        key={message.id}
+        key={index}
         message={message}
         deleteFlashMessage={deleteFlashMessage}
       />
-    ),
-  );
+    ));
 
   return (
     <div>{messages}</div>
@@ -30,10 +29,10 @@ const mapStateToProps = state => ({
   messages: state.flashMessages,
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   deleteFlashMessage: id => {
-//     dispatch(deleteFlashMessage(id));
-//   },
-// });
+const mapDispatchToProps = dispatch => ({
+  deleteFlashMessage: id => {
+    dispatch(deleteFlashMessage(id));
+  },
+});
 
-export default connect(mapStateToProps, { deleteFlashMessage })(FlashMessagesList);
+export default connect(mapStateToProps, mapDispatchToProps)(FlashMessagesList);
