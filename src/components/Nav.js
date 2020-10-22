@@ -15,7 +15,7 @@ const Nav = props => {
     deleteToken();
   };
 
-  if (loggedIn) {
+  if (user && user !== undefined) {
     return (
       <nav className="nav navbar">
         <div className="logo-container">

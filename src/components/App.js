@@ -8,7 +8,7 @@ import FlashMessagesList from '../containers/FlashMessagesList';
 import Home from './Home';
 import Login from '../containers/Login';
 import SignupPage from '../containers/Signup';
-import { userLogin, userLogout } from '../actions/index';
+import { setUser, userLogout } from '../actions/index';
 import {
   deleteToken, setToken,
 } from '../helpers/authHelper';
@@ -26,12 +26,12 @@ class App extends React.Component {
   }
 
   // componentDidMount() {
-  //   const { user, userLogin } = this.props;
-  //   const loggedIn = validSession(user, userLogin);
+  //   const { user, setUser } = this.props;
+  //   const loggedIn = validSession(user, setUser);
   //   if (!loggedIn) return;
 
   //   this.setState({
-  //     loggedIn: validSession(user, userLogin),
+  //     loggedIn: validSession(user, setUser),
   //   });
   // }
 
@@ -56,13 +56,13 @@ class App extends React.Component {
   // }, []);
 
   setLogin = user => {
-    // const { userLogin } = this.props;
+    // const { setUser } = this.props;
     setToken(user.token);
     this.setState({
       loggedIn: true,
       user: user.user,
     });
-    // userLogin(user);
+    // setUser(user);
   }
 
   setLogout = () => {
@@ -93,13 +93,13 @@ class App extends React.Component {
             // user={user}
             // component={Home}
           />
-          {/* <Route path="/login" userLogin={this.setLogin} component={Login} /> */}
+          {/* <Route path="/login" setUser={this.setLogin} component={Login} /> */}
           <Route path="/login">
-            <Login userLogin={this.setLogin} />
+            <Login />
           </Route>
           {/* <Route path="/signup" userLogin={this.setLogin} component={Signup} /> */}
           <Route path="/signup">
-            <SignupPage userLogin={this.setLogin} />
+            <SignupPage />
           </Route>
         </Switch>
       </Router>
@@ -113,7 +113,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setLogin: user => {
-    dispatch(userLogin(user));
+    dispatch(setUser(user));
   },
   setLogout: () => {
     dispatch(userLogout());

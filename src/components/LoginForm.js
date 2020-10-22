@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory, Link } from 'react-router-dom';
 import { userLogin } from '../services/englishWiseApi';
 import { setToken } from '../helpers/authHelper';
-import { addFlashMessage } from '../actions';
+import { setUser } from '../actions';
 
 const LoginForm = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  // const [error, setError] = useState([]);
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     if (e.target.id === 'email-input') {
@@ -33,23 +32,19 @@ const LoginForm = () => {
       .then(data => {
         // const { userLogin } = props;
         console.log(data.user);
-        addFlashMessage('Login succesfull');
-        // userLogin(data.user);
-        setToken(data.user);
-        history.push('/');
-      })
-      .catch(error => {
-        // setError(error);
-        addFlashMessage('Login error, check email and password');
-        console.log(error);
+        console.log(data);
+        if (data.error) {
+          console.log(data.error);
+        } else {
+          dispatch(setUser(data.user));
+          setToken(data.token);
+          history.push('/');
+        }
       });
   };
 
-  // const renderErrors = error.map(err => <span key={err}>{err}</span>);
-
   return (
     <>
-      {/* <div>{renderErrors}</div> */}
       <form className="login-form " onSubmit={handleSubmit}>
         <label htmlFor="email">
           Email:
@@ -60,19 +55,14 @@ const LoginForm = () => {
           <input id="password-input" type="password" onChange={handleChange} required />
         </label>
         <input type="submit" value="Login" />
+        <div>
+          Create a new Account:
+          {' '}
+          <Link to="/signup">Sign Up</Link>
+        </div>
       </form>
     </>
   );
 };
 
-// LoginForm.propTypes = {
-//   userLogin: PropTypes.func.isRequired,
-// };
-
-// const mapDispatchToProps = dispatch => ({
-//   userLogin: (email, password) => {
-//     dispatch(userLogin(email, password));
-//   },
-// });
-
-export default connect(null, { userLogin })(LoginForm);
+export default LoginForm;

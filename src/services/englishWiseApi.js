@@ -8,6 +8,7 @@ const userLogin = async props => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Accept: 'application/json',
     },
     body: JSON.stringify({ email, password }),
   };
@@ -17,7 +18,7 @@ const userLogin = async props => {
     return data;
   } catch (error) {
     return {
-      error: error.message,
+      error: 'Error, please try again.',
     };
   }
 };
@@ -27,6 +28,7 @@ const userSignup = async user => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Accept: 'application/json',
     },
     body: JSON.stringify(user),
   };
@@ -36,25 +38,21 @@ const userSignup = async user => {
     return data;
   } catch (error) {
     return {
-      error: error.message,
+      error: 'Error, please try again.',
     };
   }
 };
 
-const userSession = async token => {
+const autoLogin = async token => {
   const config = {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await fetch(`${baseUrl}/session`, config);
+  const response = await fetch(`${baseUrl}/auto_login`, config);
   const data = await response.json();
   return data;
 };
 
-//   return { userLogin, userSignup, userSession };
-// };
-
-export { userLogin, userSignup, userSession };
-// export default englishWiseApi;
+export { userLogin, userSignup, autoLogin };

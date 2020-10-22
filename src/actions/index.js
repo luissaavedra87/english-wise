@@ -1,17 +1,17 @@
-const USER_LOGIN = 'USER_LOGIN';
+const SET_USER = 'SET_USER';
 const LOGOUT = 'LOGOUT';
-const NEW_USER = 'NEW_USER';
-const SESSION = 'SESSION';
+// const NEW_USER = 'NEW_USER';
+const AUTO_LOGIN = 'AUTO_LOGIN';
 const ADD_FLASH_MESSAGE = 'ADD_FLASH_MESSAGE';
 const DELETE_FLASH_MESSAGE = 'DELETE_FLASH_MESSAGE';
 
-const newUser = user => ({
-  type: NEW_USER,
-  user,
-});
+// const newUser = user => ({
+//   type: NEW_USER,
+//   user,
+// });
 
-const userLogin = user => ({
-  type: USER_LOGIN,
+const setUser = user => ({
+  type: SET_USER,
   user,
 });
 
@@ -19,8 +19,8 @@ const userLogout = () => ({
   type: LOGOUT,
 });
 
-const sessionUser = user => ({
-  type: SESSION,
+const autoLogin = user => ({
+  type: AUTO_LOGIN,
   user,
 });
 
@@ -35,6 +35,6 @@ const deleteFlashMessage = message => ({
 });
 
 export {
-  newUser, userLogin, userLogout, sessionUser, addFlashMessage, deleteFlashMessage,
-  USER_LOGIN, LOGOUT, SESSION, NEW_USER, ADD_FLASH_MESSAGE, DELETE_FLASH_MESSAGE,
+  setUser, userLogout, autoLogin, addFlashMessage, deleteFlashMessage,
+  SET_USER, LOGOUT, AUTO_LOGIN, ADD_FLASH_MESSAGE, DELETE_FLASH_MESSAGE,
 };
