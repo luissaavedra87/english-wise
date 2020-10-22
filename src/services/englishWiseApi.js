@@ -9,7 +9,7 @@ const userLogin = async props => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(email, password),
+    body: JSON.stringify({ email, password }),
   };
   try {
     const response = await fetch(`${baseUrl}/login`, config);

@@ -1,4 +1,4 @@
-const LOGIN = 'LOGIN';
+const USER_LOGIN = 'USER_LOGIN';
 const LOGOUT = 'LOGOUT';
 const NEW_USER = 'NEW_USER';
 const SESSION = 'SESSION';
@@ -11,7 +11,7 @@ const newUser = user => ({
 });
 
 const userLogin = user => ({
-  type: LOGIN,
+  type: USER_LOGIN,
   user,
 });
 
@@ -36,5 +36,5 @@ const deleteFlashMessage = message => ({
 
 export {
   newUser, userLogin, userLogout, sessionUser, addFlashMessage, deleteFlashMessage,
-  LOGIN, LOGOUT, SESSION, NEW_USER, ADD_FLASH_MESSAGE, DELETE_FLASH_MESSAGE,
+  USER_LOGIN, LOGOUT, SESSION, NEW_USER, ADD_FLASH_MESSAGE, DELETE_FLASH_MESSAGE,
 };

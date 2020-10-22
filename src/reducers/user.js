@@ -1,9 +1,9 @@
-import { LOGIN, LOGOUT } from '../actions/index';
+import { USER_LOGIN, LOGOUT } from '../actions/index';
 
 const userReducer = (state = {}, action) => {
   switch (action.type) {
-    case LOGIN:
-      return { ...state, ...action.user };
+    case USER_LOGIN:
+      return { ...state, ...action.user.user };
     case LOGOUT:
       return {};
     default:
