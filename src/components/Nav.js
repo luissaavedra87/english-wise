@@ -6,7 +6,7 @@ import { deleteToken } from '../helpers/authHelper';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Nav = props => {
-  const { user, logout, loggedIn } = props;
+  const { userName, logout } = props;
   // const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -14,30 +14,6 @@ const Nav = props => {
     logout();
     deleteToken();
   };
-
-  if (user && user !== undefined) {
-    return (
-      <nav className="nav navbar">
-        <div className="logo-container">
-          <Link to="/">
-            <img src="./resources/english-logo.jpg" alt="title" />
-          </Link>
-        </div>
-        <div>
-          <Link to="/">
-            <button type="button">
-              User
-              {user.username}
-              {/* {user.username.split(' ')[0]} */}
-            </button>
-          </Link>
-          <Link to="/">
-            <button type="button" onClick={handleLogout}>Logout</button>
-          </Link>
-        </div>
-      </nav>
-    );
-  }
 
   return (
     <nav className="nav navbar">
@@ -47,24 +23,47 @@ const Nav = props => {
         </Link>
       </div>
       <div>
-        <Link to="/login">
-          <button type="button">Login</button>
+        <Link to="/">
+          <button type="button">
+            User
+            {userName}
+            {/* {user.username.split(' ')[0]} */}
+          </button>
         </Link>
-        <Link to="/signup">
-          <button type="button">Signup</button>
+        <Link to="/">
+          <button type="button" onClick={handleLogout}>Logout</button>
         </Link>
       </div>
     </nav>
   );
 };
 
+//   return (
+//     <nav className="nav navbar">
+//       <div className="logo-container">
+//         <Link to="/">
+//           <img src="./resources/english-logo.jpg" alt="title" />
+//         </Link>
+//       </div>
+//       <div>
+//         <Link to="/login">
+//           <button type="button">Login</button>
+//         </Link>
+//         <Link to="/signup">
+//           <button type="button">Signup</button>
+//         </Link>
+//       </div>
+//     </nav>
+//   );
+
 Nav.propTypes = {
-  loggedIn: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    logged: PropTypes.bool,
-    username: PropTypes.string,
-  }).isRequired,
+  userName: PropTypes.string.isRequired,
+  // user: PropTypes.objectOf(PropTypes.any).isRequired,
+  // user: PropTypes.shape({
+  //   logged: PropTypes.bool,
+  //   username: PropTypes.string,
+  // }).isRequired,
 };
 
 export default Nav;

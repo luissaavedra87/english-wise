@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { userSignup } from '../services/englishWiseApi';
 import { setToken } from '../helpers/authHelper';
 
@@ -78,6 +78,11 @@ const SignupForm = props => {
         <input id="password-conf-input" name="passwordConf" type="password" onChange={handleChange} required />
       </label>
       <input type="submit" value="SignUp" />
+      <div>
+        Already have an Account?
+        {' '}
+        <Link to="/login">Login</Link>
+      </div>
     </form>
   );
 };

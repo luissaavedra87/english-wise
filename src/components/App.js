@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Route, Switch, Redirect,
+} from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,30 +12,30 @@ import Login from '../containers/Login';
 import SignupPage from '../containers/Signup';
 import { setUser, userLogout } from '../actions/index';
 import {
-  deleteToken, setToken,
+  deleteToken, setToken, validSession,
 } from '../helpers/authHelper';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loggedIn: false,
-      user: {},
-    };
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     loggedIn: false,
+  //     user: {},
+  //   };
 
-    this.setLogin = this.setLogin.bind(this);
-    this.setLogout = this.setLogout.bind(this);
-  }
-
-  // componentDidMount() {
-  //   const { user, setUser } = this.props;
-  //   const loggedIn = validSession(user, setUser);
-  //   if (!loggedIn) return;
-
-  //   this.setState({
-  //     loggedIn: validSession(user, setUser),
-  //   });
+  //   this.setLogin = this.setLogin.bind(this);
+  //   this.setLogout = this.setLogout.bind(this);
   // }
+
+  componentDidMount() {
+    const { user, setUser } = this.props;
+    const loggedIn = validSession(user, setUser);
+    if (!loggedIn) return;
+
+    // this.setState({
+    //   loggedIn: validSession(user, setUser),
+    // });
+  }
 
   // const [user, setUser] = useState(null);
   // const [loggedIn, setLoggedIn] = useState(false);
@@ -56,50 +58,39 @@ class App extends React.Component {
   // }, []);
 
   setLogin = user => {
-    // const { setUser } = this.props;
-    setToken(user.token);
-    this.setState({
-      loggedIn: true,
-      user: user.user,
-    });
-    // setUser(user);
+    const { setUser } = this.props;
+    // setToken(user.token);
+    setUser(user);
+    console.log(user);
   }
 
   setLogout = () => {
-    // const { userLogout } = this.props;
+    const { userLogout } = this.props;
     deleteToken();
-    this.setState({
-      loggedIn: false,
-      user: {},
-    });
-    // userLogout();
+    userLogout();
   }
 
   render() {
-    const { user, loggedIn } = this.props;
-    // const loggedIn = this.props;
-
+    const { user, setUser } = this.props;
+    const loggedIn = validSession(user, setUser);
+    console.log(user);
     return (
       <Router>
-        <Nav user={user} loggedIn={loggedIn} logout={this.setLogout} />
-        <FlashMessagesList />
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <Home user={user} />
-            )}
-            // user={user}
-            // component={Home}
-          />
-          {/* <Route path="/login" setUser={this.setLogin} component={Login} /> */}
           <Route path="/login">
-            <Login />
+            { loggedIn ? <Redirect to="/" /> : <Login setUser={this.setLogin} />}
           </Route>
-          {/* <Route path="/signup" userLogin={this.setLogin} component={Signup} /> */}
           <Route path="/signup">
-            <SignupPage />
+            { loggedIn ? <Redirect to="/" /> : <SignupPage />}
+          </Route>
+          <Route exact path="/">
+            { loggedIn ? (
+              <div>
+                <Nav userName={user.username} logout={this.setLogout} />
+                <FlashMessagesList />
+                <Home userName={user.username} />
+              </div>
+            ) : <Redirect to="/login" />}
           </Route>
         </Switch>
       </Router>
@@ -112,19 +103,21 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setLogin: user => {
+  setUser: user => {
     dispatch(setUser(user));
   },
-  setLogout: () => {
+  userLogout: () => {
     dispatch(userLogout());
   },
 });
 
 App.propTypes = {
-  user: PropTypes.objectOf(PropTypes.any).isRequired,
-  loggedIn: PropTypes.bool.isRequired,
-  // setLogin: PropTypes.func.isRequired,
-  // setLogout: PropTypes.func.isRequired,
+  // user: PropTypes.objectOf(PropTypes.any).isRequired,
+  user: PropTypes.shape({
+    username: PropTypes.string,
+  }).isRequired,
+  userLogout: PropTypes.func.isRequired,
+  setUser: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -11,16 +11,20 @@ const getToken = () => (localStorage.getItem(USER_TOKEN));
 const deleteToken = () => (localStorage.removeItem(USER_TOKEN));
 
 const validSession = (user, setUser) => {
-  let loggedIn = false;
+  let loggedIn = true;
   if (Object.keys(user).length === 0) {
-    const user = getToken();
-
-    if (user && user !== undefined && user !== 'undefined') {
-      autoLogin(user.token).then(data => {
-        setToken(data.token);
+    const userToken = localStorage.getItem('userToken');
+    console.log(user.token);
+    console.log(userToken);
+    if (userToken && userToken !== undefined && userToken !== 'undefined') {
+      autoLogin(userToken).then(data => {
+        setToken(userToken);
         setUser(data);
       });
       loggedIn = true;
+    } else {
+      loggedIn = false;
+      deleteToken();
     }
   }
   return loggedIn;

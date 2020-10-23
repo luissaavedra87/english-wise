@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { userLogin } from '../services/englishWiseApi';
 import { setToken } from '../helpers/authHelper';
-import { setUser } from '../actions';
+// import { setUser } from '../actions';
 
-const LoginForm = () => {
+const LoginForm = props => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const history = useHistory();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleChange = e => {
     if (e.target.id === 'email-input') {
@@ -30,14 +31,14 @@ const LoginForm = () => {
 
     userLogin(user)
       .then(data => {
-        // const { userLogin } = props;
-        console.log(data.user);
-        console.log(data);
+        const { setUser } = props;
         if (data.error) {
           console.log(data.error);
         } else {
-          dispatch(setUser(data.user));
           setToken(data.token);
+          setUser(data.user);
+          console.log(data.user);
+          console.log(data);
           history.push('/');
         }
       });
@@ -63,6 +64,10 @@ const LoginForm = () => {
       </form>
     </>
   );
+};
+
+LoginForm.propTypes = {
+  setUser: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
