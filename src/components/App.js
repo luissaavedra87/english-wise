@@ -12,7 +12,7 @@ import Login from '../containers/Login';
 import SignupPage from '../containers/Signup';
 import { setUser, userLogout } from '../actions/index';
 import {
-  deleteToken, setToken, validSession,
+  deleteToken, validSession,
 } from '../helpers/authHelper';
 
 class App extends React.Component {
@@ -30,7 +30,7 @@ class App extends React.Component {
   componentDidMount() {
     const { user, setUser } = this.props;
     const loggedIn = validSession(user, setUser);
-    if (!loggedIn) return;
+    if (!loggedIn);
 
     // this.setState({
     //   loggedIn: validSession(user, setUser),
