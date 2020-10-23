@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux'
 
 const Home = props => {
-  const { userName } = props;
+  const { username } = props;
 
   const text = (
     <h1>
-      {userName}
+      {username}
       , welcome back to English Wise
     </h1>
   );
@@ -26,7 +26,7 @@ const Home = props => {
 };
 
 Home.propTypes = {
-  userName: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
   // user: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 

@@ -59,9 +59,9 @@ class App extends React.Component {
 
   setLogin = user => {
     const { setUser } = this.props;
+    console.log(user.token);
     // setToken(user.token);
     setUser(user);
-    console.log(user);
   }
 
   setLogout = () => {
@@ -74,6 +74,7 @@ class App extends React.Component {
     const { user, setUser } = this.props;
     const loggedIn = validSession(user, setUser);
     console.log(user);
+    console.log(user.user);
     return (
       <Router>
         <Switch>
@@ -86,9 +87,9 @@ class App extends React.Component {
           <Route exact path="/">
             { loggedIn ? (
               <div>
-                <Nav userName={user.username} logout={this.setLogout} />
+                <Nav username={user.username} logout={this.setLogout} />
                 <FlashMessagesList />
-                <Home userName={user.username} />
+                <Home username={user.username} />
               </div>
             ) : <Redirect to="/login" />}
           </Route>
@@ -112,10 +113,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 App.propTypes = {
-  // user: PropTypes.objectOf(PropTypes.any).isRequired,
-  user: PropTypes.shape({
-    username: PropTypes.string,
-  }).isRequired,
+  user: PropTypes.objectOf(PropTypes.any).isRequired,
+  // user: PropTypes.shape({
+  //   username: PropTypes.string,
+  // }).isRequired,
   userLogout: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired,
 };

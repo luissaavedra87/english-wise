@@ -6,7 +6,7 @@ import { deleteToken } from '../helpers/authHelper';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Nav = props => {
-  const { userName, logout } = props;
+  const { username, logout } = props;
   // const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -26,7 +26,7 @@ const Nav = props => {
         <Link to="/">
           <button type="button">
             User
-            {userName}
+            {username}
             {/* {user.username.split(' ')[0]} */}
           </button>
         </Link>
@@ -58,7 +58,7 @@ const Nav = props => {
 
 Nav.propTypes = {
   logout: PropTypes.func.isRequired,
-  userName: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
   // user: PropTypes.objectOf(PropTypes.any).isRequired,
   // user: PropTypes.shape({
   //   logged: PropTypes.bool,
