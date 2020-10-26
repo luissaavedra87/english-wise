@@ -10,6 +10,7 @@ import FlashMessagesList from '../containers/FlashMessagesList';
 import Home from './Home';
 import Login from '../containers/Login';
 import SignupPage from '../containers/Signup';
+import TeachersList from '../containers/TeachersList';
 import { setUser, userLogout } from '../actions/index';
 import {
   deleteToken, validSession,
@@ -58,6 +59,14 @@ class App extends React.Component {
                 <Nav username={user.username} logout={this.setLogout} />
                 <FlashMessagesList />
                 <Home username={user.username} />
+              </div>
+            ) : <Redirect to="/login" />}
+          </Route>
+          <Route path="/teachers">
+            { loggedIn ? (
+              <div>
+                <Nav username={user.username} logout={this.setLogout} />
+                <TeachersList />
               </div>
             ) : <Redirect to="/login" />}
           </Route>

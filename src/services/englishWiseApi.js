@@ -56,6 +56,13 @@ const autoLogin = async token => {
 };
 
 const getTeachers = async () => {
+  // const token = localStorage.getItem('userToken');
+  // const config = {
+  //   method: 'GET',
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // };
   const response = await fetch(`${baseUrl}/teachers`);
   const data = await response.json();
   return data;
