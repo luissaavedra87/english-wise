@@ -16,46 +16,11 @@ import {
 } from '../helpers/authHelper';
 
 class App extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     loggedIn: false,
-  //     user: {},
-  //   };
-
-  //   this.setLogin = this.setLogin.bind(this);
-  //   this.setLogout = this.setLogout.bind(this);
-  // }
-
   componentDidMount() {
     const { user, setUser } = this.props;
     const loggedIn = validSession(user, setUser);
     if (!loggedIn);
-
-    // this.setState({
-    //   loggedIn: validSession(user, setUser),
-    // });
   }
-
-  // const [user, setUser] = useState(null);
-  // const [loggedIn, setLoggedIn] = useState(false);
-
-  // useEffect(() => {
-  //   async function loadUser() {
-  //     if (!getToken()) {
-  //       setLoggedIn(false);
-  //     }
-  //     try {
-  //       const { data: user } = await fetch('')
-  //     } catch (e) {
-  //       return {
-  //         error: e.message,
-  //       };
-  //     }
-  //   }
-
-  //   loadUser();
-  // }, []);
 
   setLogin = user => {
     const { setUser } = this.props;
@@ -73,8 +38,11 @@ class App extends React.Component {
   render() {
     const { user, setUser } = this.props;
     const loggedIn = validSession(user, setUser);
+
+    const nUser = user.user;
+    console.log(nUser);
     console.log(user);
-    console.log(user.user);
+    // console.log(nUser.username);
     return (
       <Router>
         <Switch>

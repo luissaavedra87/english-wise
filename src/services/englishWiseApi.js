@@ -55,4 +55,12 @@ const autoLogin = async token => {
   return data;
 };
 
-export { userLogin, userSignup, autoLogin };
+const getTeachers = async () => {
+  const response = await fetch(`${baseUrl}/teachers`);
+  const data = await response.json();
+  return data;
+};
+
+export {
+  userLogin, userSignup, autoLogin, getTeachers,
+};

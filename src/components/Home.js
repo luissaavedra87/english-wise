@@ -1,14 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 // import { useSelector } from 'react-redux'
 
 const Home = props => {
-  const { username } = props;
+  // const { username } = props;
 
   const text = (
     <h1>
-      {username}
-      , welcome back to English Wise
+      Welcome back to English Wise
     </h1>
   );
 
@@ -25,9 +24,9 @@ const Home = props => {
   );
 };
 
-Home.propTypes = {
-  username: PropTypes.string.isRequired,
-  // user: PropTypes.objectOf(PropTypes.any).isRequired,
-};
+// Home.propTypes = {
+//   username: PropTypes.string.isRequired,
+//   user: PropTypes.objectOf(PropTypes.any).isRequired,
+// };
 
 export default Home;
