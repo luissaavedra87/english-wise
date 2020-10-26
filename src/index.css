@@ -1,3 +1,13 @@
 * {
   box-sizing: border-box;
 }
+
+.alice-carousel ul li img{
+  height: 550px;
+  width: 70%;
+  object-fit: cover;
+}
+
+.alice-carousel ul li img{
+  margin: auto;
+}
