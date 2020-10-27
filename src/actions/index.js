@@ -19,9 +19,9 @@ const getTeachers = teachers => ({
   teachers,
 });
 
-const setCurrentTeacher = teacher => ({
+const setCurrentTeacher = currentTeacher => ({
   type: SET_CURRENT_TEACHER,
-  teacher,
+  currentTeacher,
 });
 
 const addFlashMessage = message => ({
