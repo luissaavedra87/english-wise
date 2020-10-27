@@ -1,6 +1,7 @@
 const SET_USER = 'SET_USER';
 const LOGOUT = 'LOGOUT';
 const GET_TEACHERS = 'GET_TEACHERS';
+const SET_CURRENT_TEACHER = 'SET_CURRENT_TEACHER';
 const ADD_FLASH_MESSAGE = 'ADD_FLASH_MESSAGE';
 const DELETE_FLASH_MESSAGE = 'DELETE_FLASH_MESSAGE';
 
@@ -18,6 +19,11 @@ const getTeachers = teachers => ({
   teachers,
 });
 
+const setCurrentTeacher = teacher => ({
+  type: SET_CURRENT_TEACHER,
+  teacher,
+});
+
 const addFlashMessage = message => ({
   type: ADD_FLASH_MESSAGE,
   message,
@@ -29,6 +35,6 @@ const deleteFlashMessage = message => ({
 });
 
 export {
-  setUser, userLogout, getTeachers, addFlashMessage, deleteFlashMessage,
-  SET_USER, LOGOUT, GET_TEACHERS, ADD_FLASH_MESSAGE, DELETE_FLASH_MESSAGE,
+  setUser, userLogout, getTeachers, setCurrentTeacher, addFlashMessage, deleteFlashMessage,
+  SET_USER, LOGOUT, GET_TEACHERS, SET_CURRENT_TEACHER, ADD_FLASH_MESSAGE, DELETE_FLASH_MESSAGE,
 };
