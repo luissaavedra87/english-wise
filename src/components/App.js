@@ -15,6 +15,7 @@ import { setUser, userLogout } from '../actions/index';
 import {
   deleteToken, validSession,
 } from '../helpers/authHelper';
+import teacherDetails from './teacherDetails';
 
 class App extends React.Component {
   componentDidMount() {
@@ -70,7 +71,7 @@ class App extends React.Component {
               </div>
             ) : <Redirect to="/login" />}
           </Route>
-          <Route path="/details/:id" />
+          <Route path="/details/:id" component={teacherDetails} />
         </Switch>
       </Router>
     );

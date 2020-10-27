@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { getTeachers } from '../services/englishWiseApi';
-import { setTeachers } from '../actions/index';
+import { setTeachers, setCurrentTeacher } from '../actions/index';
+import TeacherSlide from '../components/teacherSlide';
 
 class TeachersList extends React.Component {
   responsive = {
@@ -17,6 +18,7 @@ class TeachersList extends React.Component {
     this.state = {
       teachers: [],
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -25,19 +27,27 @@ class TeachersList extends React.Component {
     getTeachers()
       .then(response => {
         if (response) {
-          console.log(response[0].image);
-          const image = response.map(m => (
-            <Link key={`link${m.id}`} to={`/details/${m.id}`}>
-              <img key={`teacher${m.id}`} src={m.image} alt="teachers" className="teacher-image" />
-            </Link>
+          console.log(response[0]);
+          const slide = response.map((teacher, index) => (
+            <TeacherSlide
+              key={teacher.id}
+              id={index}
+              image={teacher.image}
+              teacher={teacher}
+            />
           ));
           this.setState({
-            teachers: image,
+            teachers: slide,
           });
           setTeachers(response);
         }
       });
   }
+
+  handleClick = teacher => {
+    const { setCurrentTeacher } = this.props;
+    setCurrentTeacher(teacher);
+  };
 
   render() {
     const { teachers } = this.state;
@@ -63,11 +73,15 @@ class TeachersList extends React.Component {
 
 TeachersList.propTypes = {
   setTeachers: PropTypes.func.isRequired,
+  setCurrentTeacher: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
   setTeachers: teachers => {
     dispatch(setTeachers(teachers));
+  },
+  setCurrentTeacher: teacher => {
+    dispatch(setCurrentTeacher(teacher));
   },
 });
 
