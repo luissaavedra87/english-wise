@@ -20,7 +20,7 @@ class TeachersList extends React.Component {
       .then(response => {
         if (response) {
           console.log(response[0].image);
-          const image = response.map(m => <img key={m.id} src={m.image} alt="teachers" />);
+          const image = response.map(m => <img key={m.id} src={m.image} alt="teachers" className="teacher-image" />);
           this.setState({
             teachers: image,
           });
@@ -38,10 +38,11 @@ class TeachersList extends React.Component {
           <AliceCarousel
             items={teachers}
             responsive={this.responsive}
-            autoPlayDirection="rtl"
             autoPlayInterval={2500}
+            infinite
             autoPlay
             fadeOutAnimation
+            mouseTrackingEnabled
           />
         </div>
       </div>

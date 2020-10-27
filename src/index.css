@@ -2,12 +2,13 @@
   box-sizing: border-box;
 }
 
-.alice-carousel ul li img{
+.alice-carousel ul li img {
   height: 550px;
-  width: 70%;
+  width: 100%;
   object-fit: cover;
 }
 
-.alice-carousel ul li img{
-  margin: auto;
+.alice-carousel ul li {
+  margin-left: auto;
+  margin-right: auto;
 }
