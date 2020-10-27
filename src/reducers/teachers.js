@@ -1,4 +1,4 @@
-import { GET_TEACHERS, SET_CURRENT_TEACHER } from '../actions/index';
+import { SET_TEACHERS, SET_CURRENT_TEACHER } from '../actions/index';
 
 const initialState = {
   teachers: [],
@@ -7,7 +7,7 @@ const initialState = {
 
 const teacherReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_TEACHERS:
+    case SET_TEACHERS:
       return {
         ...state,
         teachers: action.teachers,

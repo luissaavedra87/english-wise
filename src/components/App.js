@@ -70,6 +70,7 @@ class App extends React.Component {
               </div>
             ) : <Redirect to="/login" />}
           </Route>
+          <Route path="/details/:id" />
         </Switch>
       </Router>
     );
