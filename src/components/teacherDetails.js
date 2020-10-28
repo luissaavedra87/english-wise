@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import AppoinmentForm from './AppoinmentForm';
 
 const TeacherDetails = props => {
   const { match } = props;
@@ -22,15 +23,7 @@ const TeacherDetails = props => {
         <p>{currentTeacher.name}</p>
         <h4>Description</h4>
         <p>{currentTeacher.description}</p>
-        <form>
-          <h4>Schedule a Class:</h4>
-          <label htmlFor="teacher-schedule">
-            Select your preferred day and time between 8:00am and 4:00pm
-            <input id="teacher-schedule" type="datetime-local" step="60000" required />
-          </label>
-          <input type="submit" value="Book Schedule" />
-        </form>
-
+        <AppoinmentForm />
       </div>
     </div>
   );

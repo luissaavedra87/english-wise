@@ -2,6 +2,7 @@ const SET_USER = 'SET_USER';
 const LOGOUT = 'LOGOUT';
 const SET_TEACHERS = 'SET_TEACHERS';
 const SET_CURRENT_TEACHER = 'SET_CURRENT_TEACHER';
+const SET_NEW_APPOINMENT = 'SET_NEW_APPOINMENT';
 const ADD_FLASH_MESSAGE = 'ADD_FLASH_MESSAGE';
 const DELETE_FLASH_MESSAGE = 'DELETE_FLASH_MESSAGE';
 
@@ -24,6 +25,11 @@ const setCurrentTeacher = currentTeacher => ({
   currentTeacher,
 });
 
+const setNewAppoinment = appoinment => ({
+  type: SET_NEW_APPOINMENT,
+  appoinment,
+});
+
 const addFlashMessage = message => ({
   type: ADD_FLASH_MESSAGE,
   message,
@@ -35,6 +41,8 @@ const deleteFlashMessage = message => ({
 });
 
 export {
-  setUser, userLogout, setTeachers, setCurrentTeacher, addFlashMessage, deleteFlashMessage,
-  SET_USER, LOGOUT, SET_TEACHERS, SET_CURRENT_TEACHER, ADD_FLASH_MESSAGE, DELETE_FLASH_MESSAGE,
+  setUser, userLogout, setTeachers, setCurrentTeacher,
+  setNewAppoinment, addFlashMessage, deleteFlashMessage,
+  SET_USER, LOGOUT, SET_TEACHERS, SET_CURRENT_TEACHER,
+  SET_NEW_APPOINMENT, ADD_FLASH_MESSAGE, DELETE_FLASH_MESSAGE,
 };
