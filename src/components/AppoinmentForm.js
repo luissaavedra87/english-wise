@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { connect, useDispatch } from 'react-redux';
 import { createAppoinment } from '../services/englishWiseApi';
 import { setNewAppoinment } from '../actions/index';
-// eslint-disable-next-line import/no-cycle
-// import store from '../index';
 
 const AppoinmentForm = props => {
   const [appoinmentDate, setAppoinmentDate] = useState();
@@ -27,9 +25,6 @@ const AppoinmentForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // const { currentTeacherId, user } = props;
-    // const nUser = store.getState(user);
-    console.log(user);
     const newAppoinment = {
       teacher_id: currentTeacherId,
       user_id: user.user.id,
