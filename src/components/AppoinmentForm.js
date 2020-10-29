@@ -4,11 +4,13 @@ import { connect, useDispatch } from 'react-redux';
 import { createAppoinment } from '../services/englishWiseApi';
 import { setNewAppoinment } from '../actions/index';
 // eslint-disable-next-line import/no-cycle
-import store from '../index';
+// import store from '../index';
 
 const AppoinmentForm = props => {
   const [appoinmentDate, setAppoinmentDate] = useState();
   const [appoinmentTime, setAppoinmentTime] = useState();
+
+  const { currentTeacherId, user } = props;
 
   const dispatch = useDispatch();
 
@@ -25,11 +27,12 @@ const AppoinmentForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const { currentTeacherId, user } = props;
-    const nUser = store.getState(user);
+    // const { currentTeacherId, user } = props;
+    // const nUser = store.getState(user);
+    console.log(user);
     const newAppoinment = {
       teacher_id: currentTeacherId,
-      user_id: nUser.user.user.id,
+      user_id: user.user.id,
       schedule: appoinment,
       status: true,
     };
