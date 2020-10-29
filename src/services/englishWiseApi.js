@@ -68,6 +68,20 @@ const getTeachers = async () => {
   return data;
 };
 
+const createAppoinment = async appoinment => {
+  const config = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(appoinment),
+  };
+  const response = await fetch(`${baseUrl}/appoinments`, config);
+  const data = await response.json();
+  return data;
+};
+
 export {
-  userLogin, userSignup, autoLogin, getTeachers,
+  userLogin, userSignup, autoLogin, getTeachers, createAppoinment,
 };

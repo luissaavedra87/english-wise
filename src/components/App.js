@@ -27,7 +27,6 @@ class App extends React.Component {
   setLogin = user => {
     const { setUser } = this.props;
     console.log(user.token);
-    // setToken(user.token);
     setUser(user);
   }
 
@@ -44,7 +43,7 @@ class App extends React.Component {
     const nUser = user.user;
     console.log(nUser);
     console.log(user);
-    // console.log(nUser.username);
+
     return (
       <Router>
         <Switch>

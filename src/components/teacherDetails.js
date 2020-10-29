@@ -23,7 +23,7 @@ const TeacherDetails = props => {
         <p>{currentTeacher.name}</p>
         <h4>Description</h4>
         <p>{currentTeacher.description}</p>
-        <AppoinmentForm />
+        <AppoinmentForm currentTeacherId={currentTeacher.id} />
       </div>
     </div>
   );
