@@ -13,7 +13,6 @@ const AppoinmentForm = props => {
   const dispatch = useDispatch();
 
   const handleChange = e => {
-
     if (e.target.id === 'teacher-appoinment-date') {
       setAppoinmentDate(e.target.value);
     }
@@ -28,7 +27,6 @@ const AppoinmentForm = props => {
     e.preventDefault();
     const { currentTeacherId, user } = props;
     const nUser = store.getState(user);
-    console.log(nUser);
     const newAppoinment = {
       teacher_id: currentTeacherId,
       user_id: nUser.user.user.id,
