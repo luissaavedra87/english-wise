@@ -3,20 +3,17 @@ import PropTypes from 'prop-types';
 import { connect, useDispatch } from 'react-redux';
 import { createAppoinment } from '../services/englishWiseApi';
 import { setNewAppoinment } from '../actions/index';
+// eslint-disable-next-line import/no-cycle
 import store from '../index';
 
 const AppoinmentForm = props => {
-  // const [appoinment, setAppoinment] = useState();
-
   const [appoinmentDate, setAppoinmentDate] = useState();
   const [appoinmentTime, setAppoinmentTime] = useState();
 
   const dispatch = useDispatch();
 
   const handleChange = e => {
-    // if (e.target.id === 'teacher-appoinment') {
-    //   setAppoinment(e.target.value);
-    // }
+
     if (e.target.id === 'teacher-appoinment-date') {
       setAppoinmentDate(e.target.value);
     }
@@ -53,10 +50,6 @@ const AppoinmentForm = props => {
   return (
     <form className="apooinment-form" onSubmit={handleSubmit}>
       <h4>Schedule a Class:</h4>
-      {/* <label htmlFor="teacher-appoinment">
-        Select your preferred day and time between 8:00am and 4:00pm
-        <input id="teacher-appoinment" type="datetime-local" step="60000" required onChange={handleChange} />
-      </label> */}
       <label htmlFor="teacher-appoinment-date">
         Select your preferred day and time between 8:00am and 4:00pm
         <input id="teacher-appoinment-date" type="date" onChange={handleChange} required />
