@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { createAppoinment } from '../services/englishWiseApi';
-import { setNewAppoinment } from '../actions/index';
+// import { setNewAppoinment } from '../actions/index';
 
 const AppoinmentForm = props => {
   const [appoinmentDate, setAppoinmentDate] = useState();
@@ -10,7 +10,7 @@ const AppoinmentForm = props => {
 
   const { currentTeacherId, user } = props;
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleChange = e => {
     if (e.target.id === 'teacher-appoinment-date') {
@@ -37,9 +37,11 @@ const AppoinmentForm = props => {
       .then(data => {
         if (data.error) {
           console.log(data.error);
-        } else {
-          dispatch(setNewAppoinment(data));
         }
+        // else {
+        // dispatch(setNewAppoinment(data));
+        // add the toast alert instead of dispatch
+        // }
       });
   };
 

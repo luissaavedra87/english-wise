@@ -26,7 +26,6 @@ class TeachersList extends React.Component {
     getTeachers()
       .then(response => {
         if (response) {
-          console.log(response[0]);
           const slide = response.map((teacher, index) => (
             <TeacherSlide
               key={teacher.id}
@@ -39,6 +38,7 @@ class TeachersList extends React.Component {
             teachers: slide,
           });
           setTeachers(response);
+          console.log(response);
         }
       });
   }

@@ -1,11 +1,11 @@
-import { SET_NEW_APPOINMENT } from '../actions/index';
+import { GET_APPOINMENTS } from '../actions/index';
 
 const appoinmentReducer = (state = [], action) => {
   switch (action.type) {
-    case SET_NEW_APPOINMENT:
+    case GET_APPOINMENTS:
       return {
         ...state,
-        appoinment: action.appoinment,
+        appoinments: action.appoinments,
       };
     default:
       return state;

@@ -82,6 +82,12 @@ const createAppoinment = async appoinment => {
   return data;
 };
 
+const callAppoinments = async () => {
+  const response = await fetch(`${baseUrl}/appoinments`);
+  const data = await response.json();
+  return data;
+};
+
 export {
-  userLogin, userSignup, autoLogin, getTeachers, createAppoinment,
+  userLogin, userSignup, autoLogin, getTeachers, createAppoinment, callAppoinments,
 };
