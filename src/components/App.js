@@ -15,7 +15,7 @@ import { setUser, userLogout } from '../actions/index';
 import {
   deleteToken, validSession,
 } from '../helpers/authHelper';
-import teacherDetails from './teacherDetails';
+import TeacherDetails from './TeacherDetails';
 import UserSchedule from './userSchedule';
 
 class App extends React.Component {
@@ -27,7 +27,7 @@ class App extends React.Component {
 
   setLogin = user => {
     const { setUser } = this.props;
-    console.log(user.token);
+    // console.log(user.token);
     setUser(user);
   }
 
@@ -41,9 +41,9 @@ class App extends React.Component {
     const { user, setUser } = this.props;
     const loggedIn = validSession(user, setUser);
 
-    const nUser = user.user;
-    console.log(nUser);
-    console.log(user);
+    // const nUser = user.user;
+    // console.log(nUser);
+    // console.log(user);
 
     return (
       <Router>
@@ -71,8 +71,15 @@ class App extends React.Component {
               </div>
             ) : <Redirect to="/login" />}
           </Route>
-          <Route path="/details/:id" component={teacherDetails} />
-          <Route path="/schedule" component={UserSchedule} />
+          <Route path="/details/:id" component={TeacherDetails} />
+          {/* <Route path="/details/:id">
+            <Nav username={user.username} logout={this.setLogout} />
+            <TeacherDetails />
+          </Route> */}
+          <Route path="/schedule">
+            <Nav username={user.username} logout={this.setLogout} />
+            <UserSchedule />
+          </Route>
         </Switch>
       </Router>
     );

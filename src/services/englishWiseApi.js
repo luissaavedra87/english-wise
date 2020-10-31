@@ -82,8 +82,8 @@ const createAppoinment = async appoinment => {
   return data;
 };
 
-const callAppoinments = async () => {
-  const response = await fetch(`${baseUrl}/appoinments`);
+const callAppoinments = async id => {
+  const response = await fetch(`${baseUrl}/users/${id}/appoinments`);
   const data = await response.json();
   return data;
 };
