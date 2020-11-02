@@ -5,7 +5,7 @@ const ScheduleCard = props => {
   const { appoinment } = props;
 
   return (
-    <div>{appoinment}</div>
+    <div>{JSON.stringify(appoinment)}</div>
   );
 };
 
