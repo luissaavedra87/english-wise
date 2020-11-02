@@ -2,15 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ScheduleCard = props => {
-  const { appoinment } = props;
+  const { id, schedule, teacherId } = props;
 
   return (
-    <div>{JSON.stringify(appoinment)}</div>
+    <>
+      <td>{id}</td>
+      <td>{schedule}</td>
+      <td>{teacherId}</td>
+    </>
   );
 };
 
 ScheduleCard.propTypes = {
-  appoinment: PropTypes.objectOf(PropTypes.any).isRequired,
+  id: PropTypes.number.isRequired,
+  schedule: PropTypes.string.isRequired,
+  teacherId: PropTypes.number.isRequired,
 };
 
 export default ScheduleCard;

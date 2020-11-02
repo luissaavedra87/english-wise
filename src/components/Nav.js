@@ -19,7 +19,7 @@ const Nav = props => {
     <nav className="nav navbar">
       <div className="logo-container">
         <Link to="/">
-          <img src="./resources/english-logo.jpg" alt="title" />
+          <img src="../resources/english-logo.png" alt="title" />
         </Link>
       </div>
       <div>
