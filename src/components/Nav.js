@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { deleteToken } from '../helpers/authHelper';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../resources/english-logo.png';
@@ -19,12 +21,16 @@ const Nav = props => {
     <nav className="nav navbar">
       {user ? (
         <div className="d-flex w-100 justify-content-between">
+          <div id="sidebarCollapse" className="d-flex align-items-center">
+            <FontAwesomeIcon icon={faBars} />
+            {/* <span>Open Sidebar</span> */}
+          </div>
           <div className="logo-container">
             <Link to="/">
               <img src={logo} alt="english wise Logo" />
             </Link>
           </div>
-          <div>
+          <div className="d-flex align-items-center">
             <Link to="/">
               <button type="button">
                 {user.username}

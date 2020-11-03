@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from './Nav';
-import FlashMessagesList from '../containers/FlashMessagesList';
 import Home from './Home';
 import Login from '../containers/Login';
 import SignupPage from '../containers/Signup';
@@ -58,7 +57,7 @@ class App extends React.Component {
             { loggedIn ? (
               <div>
                 <Nav username={user.username} logout={this.setLogout} />
-                <FlashMessagesList />
+                {/* <SideBar /> */}
                 <Home username={user.username} />
               </div>
             ) : <Redirect to="/login" />}
