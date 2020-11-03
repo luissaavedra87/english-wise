@@ -16,8 +16,17 @@ import {
 } from '../helpers/authHelper';
 import TeacherDetails from './TeacherDetails';
 import UserSchedule from './userSchedule';
+import SideBar from './SideBar';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sidebarOpen: false,
+    };
+    this.openHandler = this.openHandler.bind(this);
+  }
+
   componentDidMount() {
     const { user, setUser } = this.props;
     const loggedIn = validSession(user, setUser);
@@ -26,7 +35,6 @@ class App extends React.Component {
 
   setLogin = user => {
     const { setUser } = this.props;
-    // console.log(user.token);
     setUser(user);
   }
 
@@ -36,13 +44,30 @@ class App extends React.Component {
     userLogout();
   }
 
+  openHandler = () => {
+    const { sidebarOpen } = this.state;
+
+    if (!sidebarOpen) {
+      this.setState({
+        sidebarOpen: true,
+      });
+    } else {
+      this.setState({
+        sidebarOpen: false,
+      });
+    }
+  }
+
+  handleClose = () => {
+    this.setState({
+      sidebarOpen: false,
+    });
+  }
+
   render() {
     const { user, setUser } = this.props;
     const loggedIn = validSession(user, setUser);
-
-    // const nUser = user.user;
-    // console.log(nUser);
-    // console.log(user);
+    const { sidebarOpen } = this.state;
 
     return (
       <Router>
@@ -55,28 +80,38 @@ class App extends React.Component {
           </Route>
           <Route exact path="/">
             { loggedIn ? (
-              <div>
-                <Nav username={user.username} logout={this.setLogout} />
-                {/* <SideBar /> */}
-                <Home username={user.username} />
+              <div className="wrapper">
+                <Nav
+                  username={user.username}
+                  logout={this.setLogout}
+                  openHandler={this.openHandler}
+                />
+                {sidebarOpen ? <SideBar close={this.handleClose} sidebar="sidebar" /> : ''}
+                <Home />
               </div>
             ) : <Redirect to="/login" />}
           </Route>
           <Route path="/teachers">
             { loggedIn ? (
               <div>
-                <Nav username={user.username} logout={this.setLogout} />
+                <Nav
+                  username={user.username}
+                  logout={this.setLogout}
+                  openHandler={this.openHandler}
+                />
+                {sidebarOpen ? <SideBar close={this.handleClose} sidebar="sidebar" /> : ''}
                 <TeachersList />
               </div>
             ) : <Redirect to="/login" />}
           </Route>
           <Route path="/details/:id" component={TeacherDetails} />
-          {/* <Route path="/details/:id">
-            <Nav username={user.username} logout={this.setLogout} />
-            <TeacherDetails />
-          </Route> */}
           <Route path="/schedule">
-            <Nav username={user.username} logout={this.setLogout} />
+            <Nav
+              username={user.username}
+              logout={this.setLogout}
+              openHandler={this.openHandler}
+            />
+            {sidebarOpen ? <SideBar close={this.handleClose} sidebar="sidebar" /> : ''}
             <UserSchedule />
           </Route>
         </Switch>
@@ -100,9 +135,6 @@ const mapDispatchToProps = dispatch => ({
 
 App.propTypes = {
   user: PropTypes.objectOf(PropTypes.any).isRequired,
-  // user: PropTypes.shape({
-  //   username: PropTypes.string,
-  // }).isRequired,
   userLogout: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired,
 };

@@ -9,8 +9,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../resources/english-logo.png';
 
 const Nav = props => {
-  const { logout } = props;
+  const { logout, openHandler } = props;
   const user = useSelector(state => state.user.user);
+
+  const handleOpen = () => {
+    openHandler();
+  };
 
   const handleLogout = () => {
     logout();
@@ -22,8 +26,7 @@ const Nav = props => {
       {user ? (
         <div className="d-flex w-100 justify-content-between">
           <div id="sidebarCollapse" className="d-flex align-items-center">
-            <FontAwesomeIcon icon={faBars} />
-            {/* <span>Open Sidebar</span> */}
+            <FontAwesomeIcon icon={faBars} onClick={handleOpen} />
           </div>
           <div className="logo-container">
             <Link to="/">
@@ -48,6 +51,7 @@ const Nav = props => {
 
 Nav.propTypes = {
   logout: PropTypes.func.isRequired,
+  openHandler: PropTypes.func.isRequired,
 };
 
 export default Nav;
