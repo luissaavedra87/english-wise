@@ -53,7 +53,7 @@ class TeachersList extends React.Component {
 
     return (
       <div>
-        <div>Pick a Teacher</div>
+        <div className="teachers-title d-flex justify-content-center my-3">Select from our excelent teachers</div>
         <div>
           <AliceCarousel
             items={teachers}

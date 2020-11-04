@@ -38,8 +38,8 @@ const UserSchedule = () => {
 
   return (
     <div>
-      My Schedule
-      <Table striped bordered hover>
+      <div className="schedule-title d-flex justify-content-center my-3">My Schedule</div>
+      <Table striped bordered hover className="schedule-table mx-auto">
         <thead>
           <tr>
             <th>Id</th>

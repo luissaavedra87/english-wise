@@ -3,7 +3,7 @@ import teacherSalon from '../resources/teacher-salon.jpg';
 
 const Home = () => {
   const text = (
-    <h4 className="d-flex justify-content-center">
+    <h4 className="d-flex justify-content-center my-3">
       Welcome back to English Wise
     </h4>
   );

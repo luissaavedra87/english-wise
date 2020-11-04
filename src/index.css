@@ -61,9 +61,17 @@ hr {
   z-index: 9999;
 }
 
+@keyframes slide-open {
+  100% { left: 0 }
+}
+
 .sidebar.close {
   left: 0;
   animation: slide-close 1.0s backwards;
+}
+
+@keyframes slide-close {
+  100% { left: -100% }
 }
 
 .sidebar-header {
@@ -95,10 +103,11 @@ hr {
   right: 10px;
 }
 
-@keyframes slide-open {
-  100% { left: 0 }
+.teachers-title,
+.schedule-title {
+  font-size: 24px;
 }
 
-@keyframes slide-close {
-  100% { left: -100% }
+.schedule-table {
+  max-width: 700px;
 }
