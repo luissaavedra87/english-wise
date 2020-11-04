@@ -18,21 +18,9 @@ hr {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.alice-carousel ul li img {
-  height: 550px;
-  width: 100%;
-  object-fit: cover;
-}
-
-.alice-carousel ul li {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .details-teacher-img {
   max-width: 200px;
   max-height: 250px;
-  
 }
 
 .home {
@@ -62,22 +50,22 @@ hr {
   opacity: 0.95;
   top: 0;
   left: -100%;
-  background-color:#f24849;
-  animation: slide-open 1.0s forwards;
+  background-color: #f24849;
+  animation: slide-open 1s forwards;
   z-index: 9999;
 }
 
 @keyframes slide-open {
-  100% { left: 0 }
+  100% { left: 0; }
 }
 
 .sidebar.close {
   left: 0;
-  animation: slide-close 1.0s backwards;
+  animation: slide-close 1s backwards;
 }
 
 @keyframes slide-close {
-  100% { left: -100% }
+  100% { left: -100%; }
 }
 
 .sidebar-header {
@@ -107,6 +95,17 @@ hr {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+.alice-carousel ul li img {
+  height: 550px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.alice-carousel ul li {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .teachers-title,

@@ -14,7 +14,7 @@ const TeacherDetails = props => {
     <div className="teacher-details-container">
       <div className="container-back">
         <Link to="/teachers">
-          <h4 className="back">Go Back</h4>
+          <h4 className="back ml-5">Go Back</h4>
         </Link>
       </div>
       <div className="teacher-details">
@@ -23,6 +23,8 @@ const TeacherDetails = props => {
           <div className="d-flex flex-column mr-5 justify-content-center">
             <h4>Name</h4>
             <p>{currentTeacher.name}</p>
+            <h4>Teacher Id</h4>
+            <p>{currentTeacher.id}</p>
             <h4>Description</h4>
             <p>{currentTeacher.description}</p>
           </div>

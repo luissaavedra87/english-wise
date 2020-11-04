@@ -40,7 +40,6 @@ const LoginForm = props => {
           toast.warn('Wrong email or password');
         }
       });
-
   };
 
   return (

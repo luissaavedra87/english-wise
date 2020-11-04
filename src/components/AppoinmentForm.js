@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 import { createAppoinment } from '../services/englishWiseApi';
 
 const AppoinmentForm = props => {
@@ -32,9 +33,9 @@ const AppoinmentForm = props => {
     createAppoinment(newAppoinment)
       .then(data => {
         if (data.error) {
-          console.log(data.error);
+          toast.error(data.error);
         } else {
-        // add the toast alert instead of dispatch
+          toast.success('Appoinment created');
         }
       });
   };

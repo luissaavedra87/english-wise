@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Table from 'react-bootstrap/Table';
+import { toast } from 'react-toastify';
 import { callAppoinments } from '../services/englishWiseApi';
 import { getAppoinments } from '../actions/index';
 import ScheduleCard from './ScheduleCard';
@@ -16,7 +17,7 @@ const UserSchedule = () => {
       callAppoinments(user.id)
         .then(data => {
           if (data.error) {
-            console.log(data.error);
+            toast.error(data.error);
           } else {
             dispatch(getAppoinments(data));
           }
