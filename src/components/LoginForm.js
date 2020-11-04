@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { userLogin } from '../services/englishWiseApi';
 import { setToken } from '../helpers/authHelper';
-// import { setUser } from '../actions';
 
 const LoginForm = props => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const history = useHistory();
-  // const dispatch = useDispatch();
 
   const handleChange = e => {
     if (e.target.id === 'email-input') {
@@ -37,8 +34,6 @@ const LoginForm = props => {
         } else {
           setToken(data.token);
           setUser(data.user);
-          console.log(data.user);
-          console.log(data);
           history.push('/');
         }
       });

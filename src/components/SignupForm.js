@@ -41,8 +41,6 @@ const SignupForm = props => {
 
     userSignup(newUser)
       .then(data => {
-        // const { userLogin } = props;
-        // userLogin(data);
         setToken(data.token);
         if (data.token && data.token !== undefined) {
           addFlashMessage('You signed up succesfully. Welcome!');
@@ -52,7 +50,6 @@ const SignupForm = props => {
       .catch(error => {
         setError(error);
         addFlashMessage('There is an error, please try again');
-        // history.push('/signup');
       });
   };
 
