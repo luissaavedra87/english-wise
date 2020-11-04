@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import PropTypes from 'prop-types';
 import Table from 'react-bootstrap/Table';
 import { callAppoinments } from '../services/englishWiseApi';
 import { getAppoinments } from '../actions/index';
@@ -57,15 +56,5 @@ const UserSchedule = () => {
     </div>
   );
 };
-
-// UserSchedule.propTypes = {
-//   appoinments: PropTypes.arrayOf(PropTypes.any).isRequired,
-//   user: PropTypes.objectOf(PropTypes.any).isRequired,
-// };
-
-// const mapStateToProps = state => ({
-//   user: state.user,
-//   appoinments: state.appoinments,
-// });
 
 export default UserSchedule;

@@ -17,7 +17,7 @@ const Home = () => {
         </div>
         <div className="home-text mx-auto">
           If you are looking for a personal learning,&nbsp;
-          search between our teachers and schedule a 1 hour class.
+          search between our teachers and schedule a one hour class.
         </div>
       </div>
     </>

@@ -36,12 +36,12 @@ const Nav = props => {
             </div>
             <div className="d-flex align-items-center">
               <Link to="/">
-                <button type="button">
+                <button className="btn display-user text-uppercase" type="button">
                   {user.username}
                 </button>
               </Link>
               <Link to="/">
-                <button type="button" onClick={handleLogout}>Logout</button>
+                <button className="btn btn-danger" type="button" onClick={handleLogout}>Logout</button>
               </Link>
             </div>
           </div>
