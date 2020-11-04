@@ -104,8 +104,7 @@ class App extends React.Component {
               </div>
             ) : <Redirect to="/login" />}
           </Route>
-          <Route path="/details/:id" component={TeacherDetails} />
-          {/* <Route path="/details/:id">
+          <Route path="/details/:id">
             <Nav
               username={user.username}
               logout={this.setLogout}
@@ -113,7 +112,7 @@ class App extends React.Component {
             />
             {sidebarOpen ? <SideBar close={this.handleClose} sidebar="sidebar" /> : ''}
             <TeacherDetails />
-          </Route> */}
+          </Route>
           <Route path="/schedule">
             <Nav
               username={user.username}

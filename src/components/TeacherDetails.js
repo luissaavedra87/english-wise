@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import AppoinmentForm from './AppoinmentForm';
 
 const TeacherDetails = props => {
@@ -14,7 +14,7 @@ const TeacherDetails = props => {
     <div className="teacher-details-container">
       <div className="container-back">
         <Link to="/teachers">
-          <h2 className="back">Go Back</h2>
+          <h4 className="back">Go Back</h4>
         </Link>
       </div>
       <div className="teacher-details">
@@ -48,4 +48,4 @@ const mapStateToProps = state => ({
   currentTeacher: state.teachers.currentTeacher,
 });
 
-export default connect(mapStateToProps, null)(TeacherDetails);
+export default connect(mapStateToProps, null)(withRouter(TeacherDetails));

@@ -39,20 +39,22 @@ const UserSchedule = () => {
   return (
     <div>
       <div className="schedule-title d-flex justify-content-center my-3">My Schedule</div>
-      <Table striped bordered hover className="schedule-table mx-auto">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Schedule</th>
-            <th>Teacher Id</th>
-          </tr>
-        </thead>
-        <tbody>
-          {appoinmentArray.map(appoinment => (
-            <tr key={appoinment.id}>{appoinment}</tr>
-          ))}
-        </tbody>
-      </Table>
+      {appoinmentArray.length !== 0 ? (
+        <Table striped bordered hover className="schedule-table mx-auto">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Schedule</th>
+              <th>Teacher Id</th>
+            </tr>
+          </thead>
+          <tbody>
+            {appoinmentArray.map(appoinment => (
+              <tr key={appoinment.id}>{appoinment}</tr>
+            ))}
+          </tbody>
+        </Table>
+      ) : <div>You have no appoinments, please schedule with our teachers.</div>}
     </div>
   );
 };

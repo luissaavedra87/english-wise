@@ -56,7 +56,7 @@ const AppoinmentForm = props => {
           <input id="teacher-appoinment-time" type="time" step="3600" min="08:00" max="16:00" onChange={handleChange} required />
         </label>
       </div>
-      <input className="btn btn-primary" type="submit" value="Book Schedule" />
+      <input className="btn btn-success" type="submit" value="Book Schedule" />
     </form>
   );
 };
