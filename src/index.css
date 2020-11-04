@@ -25,8 +25,9 @@ hr {
 }
 
 .details-teacher-img {
-  width: 200px;
-  height: 250;
+  max-width: 200px;
+  max-height: 250px;
+  
 }
 
 .home {

@@ -37,25 +37,26 @@ const AppoinmentForm = props => {
       .then(data => {
         if (data.error) {
           console.log(data.error);
-        }
-        // else {
+        } else {
         // dispatch(setNewAppoinment(data));
         // add the toast alert instead of dispatch
-        // }
+        }
       });
   };
 
   return (
-    <form className="apooinment-form" onSubmit={handleSubmit}>
+    <form className="apooinment-form d-flex flex-column mt-3 align-items-center" onSubmit={handleSubmit}>
       <h4>Schedule a Class:</h4>
-      <label htmlFor="teacher-appoinment-date">
-        Select your preferred day and time between 8:00am and 4:00pm
-        <input id="teacher-appoinment-date" type="date" onChange={handleChange} required />
-      </label>
-      <label htmlFor="teacher-appoinment-time">
-        <input id="teacher-appoinment-time" type="time" step="3600" min="08:00" max="16:00" onChange={handleChange} required />
-      </label>
-      <input type="submit" value="Book Schedule" />
+      <p>Select your preferred day and time between 8:00am and 4:00pm</p>
+      <div>
+        <label htmlFor="teacher-appoinment-date">
+          <input id="teacher-appoinment-date" type="date" onChange={handleChange} required />
+        </label>
+        <label htmlFor="teacher-appoinment-time">
+          <input id="teacher-appoinment-time" type="time" step="3600" min="08:00" max="16:00" onChange={handleChange} required />
+        </label>
+      </div>
+      <input className="btn btn-primary" type="submit" value="Book Schedule" />
     </form>
   );
 };

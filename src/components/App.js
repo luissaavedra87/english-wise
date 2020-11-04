@@ -105,6 +105,15 @@ class App extends React.Component {
             ) : <Redirect to="/login" />}
           </Route>
           <Route path="/details/:id" component={TeacherDetails} />
+          {/* <Route path="/details/:id">
+            <Nav
+              username={user.username}
+              logout={this.setLogout}
+              openHandler={this.openHandler}
+            />
+            {sidebarOpen ? <SideBar close={this.handleClose} sidebar="sidebar" /> : ''}
+            <TeacherDetails />
+          </Route> */}
           <Route path="/schedule">
             <Nav
               username={user.username}

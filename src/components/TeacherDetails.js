@@ -18,11 +18,16 @@ const TeacherDetails = props => {
         </Link>
       </div>
       <div className="teacher-details">
-        <img className="details-teacher-img" src={currentTeacher.image} alt="teacher" />
-        <h4>Name</h4>
-        <p>{currentTeacher.name}</p>
-        <h4>Description</h4>
-        <p>{currentTeacher.description}</p>
+        <div className="d-flex justify-content-around mb-3">
+          <img className="details-teacher-img mx-5" src={currentTeacher.image} alt="teacher" />
+          <div className="d-flex flex-column mr-5 justify-content-center">
+            <h4>Name</h4>
+            <p>{currentTeacher.name}</p>
+            <h4>Description</h4>
+            <p>{currentTeacher.description}</p>
+          </div>
+        </div>
+        <hr />
         <AppoinmentForm currentTeacherId={currentTeacher.id} />
       </div>
     </div>
