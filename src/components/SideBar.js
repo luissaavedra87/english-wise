@@ -25,8 +25,9 @@ const SideBar = props => {
       <div className="sidebar-header">
         <img src={logoIcon} alt="logo Icon" />
       </div>
-      <ul className="list-unstyled components">
-        <p>Click on options</p>
+      <ul className="list-unstyled sidenav-list">
+        <p>Select from the Menu:</p>
+        <hr />
         <li>
           <Link to="/">Home</Link>
         </li>
