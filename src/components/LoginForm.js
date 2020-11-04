@@ -54,8 +54,8 @@ const LoginForm = props => {
           Password:
           <input id="password-input" type="password" onChange={handleChange} required />
         </label>
-        <input type="submit" value="Login" />
-        <div>
+        <input className="mt-3" type="submit" value="Login" />
+        <div className="mt-3">
           Create a new Account:
           {' '}
           <Link to="/signup">Sign Up</Link>

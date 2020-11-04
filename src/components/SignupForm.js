@@ -70,8 +70,8 @@ const SignupForm = () => {
         Password Confirmation:
         <input id="password-conf-input" name="passwordConf" type="password" onChange={handleChange} required />
       </label>
-      <input type="submit" value="SignUp" />
-      <div>
+      <input className="mt-3" type="submit" value="SignUp" />
+      <div className="mt-3">
         Already have an Account?
         {' '}
         <Link to="/login">Login</Link>

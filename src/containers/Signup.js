@@ -1,27 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import SignupForm from '../components/SignupForm';
-import { addFlashMessage } from '../actions';
+import logo from '../resources/english-logo.png';
 
-const SignupPage = props => {
-  const { addFlashMessage } = props;
-
-  return (
-    <div className="signup text-center">
-      <h1>Signup</h1>
-      <div className="row d-flex">
-        <div className="col-4 col-offset-4 mx-auto">
-          <SignupForm addFlashMessage={addFlashMessage} />
-        </div>
+const SignupPage = () => (
+  <div className="signup text-center bg-light">
+    <img src={logo} alt="logo" className="mt-4" />
+    <h2 className="my-3">Signup</h2>
+    <div className="row d-flex">
+      <div className="col-4 col-offset-4 mx-auto">
+        <SignupForm />
       </div>
-
     </div>
-  );
-};
 
-SignupPage.propTypes = {
-  addFlashMessage: PropTypes.func.isRequired,
-};
+  </div>
+);
 
-export default connect(null, { addFlashMessage })(SignupPage);
+export default SignupPage;
