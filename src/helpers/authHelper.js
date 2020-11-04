@@ -14,7 +14,6 @@ const validSession = (user, setUser) => {
   let loggedIn = true;
   if (Object.keys(user).length === 0) {
     const userToken = localStorage.getItem('userToken');
-    // console.log(userToken);
     if (userToken && userToken !== undefined && userToken !== 'undefined') {
       autoLogin(userToken).then(data => {
         setToken(userToken);

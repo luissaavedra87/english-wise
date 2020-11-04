@@ -20,15 +20,8 @@ const SignupPage = props => {
   );
 };
 
-// const mapDispatchToProps = dispatch => ({
-//   addFlashMessage: message => {
-//     dispatch(addFlashMessage(message));
-//   },
-// });
-
 SignupPage.propTypes = {
   addFlashMessage: PropTypes.func.isRequired,
-  // userLogin: PropTypes.func.isRequired,
 };
 
 export default connect(null, { addFlashMessage })(SignupPage);

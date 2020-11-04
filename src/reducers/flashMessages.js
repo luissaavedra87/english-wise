@@ -1,4 +1,3 @@
-// import shortid from 'shortid';
 import { ADD_FLASH_MESSAGE, DELETE_FLASH_MESSAGE } from '../actions/index';
 
 const flashMessages = (state = [], action) => {

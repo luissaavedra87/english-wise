@@ -38,7 +38,6 @@ class TeachersList extends React.Component {
             teachers: slide,
           });
           setTeachers(response);
-          console.log(response);
         }
       });
   }
