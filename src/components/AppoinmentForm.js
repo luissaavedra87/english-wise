@@ -31,7 +31,6 @@ const AppoinmentForm = props => {
       schedule: appoinment,
       status: true,
     };
-    console.log(newAppoinment);
 
     createAppoinment(newAppoinment)
       .then(data => {
