@@ -22,30 +22,33 @@ const Nav = props => {
   };
 
   return (
-    <nav className="nav navbar">
-      {user ? (
-        <div className="d-flex w-100 justify-content-between">
-          <div id="sidebarCollapse" className="d-flex align-items-center">
-            <FontAwesomeIcon icon={faBars} onClick={handleOpen} />
+    <>
+      <nav className="nav navbar">
+        {user ? (
+          <div className="d-flex w-100 justify-content-between">
+            <div id="sidebarCollapse" className="d-flex align-items-center">
+              <FontAwesomeIcon icon={faBars} onClick={handleOpen} />
+            </div>
+            <div className="logo-container">
+              <Link to="/">
+                <img src={logo} alt="english wise Logo" />
+              </Link>
+            </div>
+            <div className="d-flex align-items-center">
+              <Link to="/">
+                <button type="button">
+                  {user.username}
+                </button>
+              </Link>
+              <Link to="/">
+                <button type="button" onClick={handleLogout}>Logout</button>
+              </Link>
+            </div>
           </div>
-          <div className="logo-container">
-            <Link to="/">
-              <img src={logo} alt="english wise Logo" />
-            </Link>
-          </div>
-          <div className="d-flex align-items-center">
-            <Link to="/">
-              <button type="button">
-                {user.username}
-              </button>
-            </Link>
-            <Link to="/">
-              <button type="button" onClick={handleLogout}>Logout</button>
-            </Link>
-          </div>
-        </div>
-      ) : <div>Loading...</div>}
-    </nav>
+        ) : <div>Loading...</div>}
+      </nav>
+      <hr />
+    </>
   );
 };
 

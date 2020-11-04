@@ -2,6 +2,17 @@
   box-sizing: border-box;
 }
 
+#root {
+  max-width: 768px;
+  margin: auto;
+}
+
+hr {
+  margin-top: 0 !important;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .alice-carousel ul li img {
   height: 550px;
   width: 100%;
@@ -18,15 +29,26 @@
   height: 250;
 }
 
+.home {
+  max-width: 768px;
+}
+
+.home-text {
+  max-width: 400px;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
 .wrapper {
   display: block;
 }
 
 .sidebar {
-  width: 250px;
+  width: 200px;
   height: 100vh;
   position: fixed;
-  opacity: 0.9;
+  opacity: 0.95;
   top: 0;
   left: -100%;
   background-color:#f24849;
