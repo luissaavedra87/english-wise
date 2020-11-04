@@ -5,6 +5,7 @@ import {
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import Nav from './Nav';
 import Home from './Home';
 import Login from '../containers/Login';

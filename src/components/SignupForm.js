@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { PropTypes } from 'prop-types';
 import { useHistory, Link } from 'react-router-dom';
+import { useDispatch, connect } from 'react-redux';
+import { toast } from 'react-toastify';
 import { userSignup } from '../services/englishWiseApi';
 import { setToken } from '../helpers/authHelper';
+import { setUser } from '../actions/index';
 
-const SignupForm = props => {
+const SignupForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState();
   const [passwordConf, setPasswordConf] = useState();
-  const [error, setError] = useState([]);
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     if (e.target.id === 'username-input') {
@@ -37,27 +39,21 @@ const SignupForm = props => {
       password_confirmation: passwordConf,
     };
 
-    const { addFlashMessage } = props;
-
     userSignup(newUser)
       .then(data => {
-        setToken(data.token);
         if (data.token && data.token !== undefined) {
-          addFlashMessage('You signed up succesfully. Welcome!');
-          history.push('/login');
+          setToken(data.token);
+          dispatch(setUser(data.user));
+          history.push('/');
+          toast.success('Successful Signup');
+        } else {
+          toast.warn('Unable to create user');
         }
-      })
-      .catch(error => {
-        setError(error);
-        addFlashMessage('There is an error, please try again');
       });
   };
 
-  const renderErrors = error.map(err => <span key={err}>{err}</span>);
-
   return (
     <form className="signup-form" onSubmit={handleSubmit}>
-      <div>{renderErrors}</div>
       <label htmlFor="username">
         Username:
         <input id="username-input" name="username" type="text" onChange={handleChange} required />
@@ -84,8 +80,8 @@ const SignupForm = props => {
   );
 };
 
-SignupForm.propTypes = {
-  addFlashMessage: PropTypes.func.isRequired,
-};
+const mapStateToProps = state => ({
+  user: state.user,
+});
 
-export default SignupForm;
+export default connect(mapStateToProps)(SignupForm);

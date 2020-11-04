@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import { userLogin } from '../services/englishWiseApi';
 import { setToken } from '../helpers/authHelper';
 
+toast.configure();
 const LoginForm = props => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -29,14 +31,16 @@ const LoginForm = props => {
     userLogin(user)
       .then(data => {
         const { setUser } = props;
-        if (data.error) {
-          console.log(data.error);
-        } else {
+        if (data.token) {
           setToken(data.token);
           setUser(data.user);
           history.push('/');
+          toast.success('Successful Login');
+        } else {
+          toast.warn('Wrong email or password');
         }
       });
+
   };
 
   return (
