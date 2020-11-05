@@ -11,11 +11,11 @@ const Home = () => {
   return (
     <>
       <div className="home mx-auto">
-        <div>{text}</div>
+        <div data-testid="welcome-text">{text}</div>
         <div className="d-flex justify-content-center">
           <img src={teacherSalon} alt="teacher-salon" />
         </div>
-        <div className="home-text mx-auto">
+        <div data-testid="info-text" className="home-text mx-auto">
           If you are looking for a personal learning,&nbsp;
           search between our teachers and schedule a one hour class.
         </div>

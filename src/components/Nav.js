@@ -41,7 +41,7 @@ const Nav = props => {
                 </button>
               </Link>
               <Link to="/">
-                <button className="btn btn-danger" type="button" onClick={handleLogout}>Logout</button>
+                <button data-testid="logout" className="btn btn-danger" type="button" onClick={handleLogout}>Logout</button>
               </Link>
             </div>
           </div>

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders ok 1`] = `
+<DocumentFragment>
+  <div
+    class="home mx-auto"
+  >
+    <div
+      data-testid="welcome-text"
+    >
+      <h4
+        class="d-flex justify-content-center my-3"
+      >
+        Welcome back to English Wise
+      </h4>
+    </div>
+    <div
+      class="d-flex justify-content-center"
+    >
+      <img
+        alt="teacher-salon"
+        src="teacher-salon.jpg"
+      />
+    </div>
+    <div
+      class="home-text mx-auto"
+      data-testid="info-text"
+    >
+      If you are looking for a personal learning,  search between our teachers and schedule a one hour class.
+    </div>
+  </div>
+</DocumentFragment>
+`;
