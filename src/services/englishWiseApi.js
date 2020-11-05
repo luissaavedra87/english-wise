@@ -1,5 +1,4 @@
-// const baseUrl = 'https://nriqu322-english-wise-netlify.net';
-const baseUrl = 'http://localhost:3001';
+const baseUrl = 'https://nriqu322-english-wise-netlify.net';
 
 const userLogin = async props => {
   const { email, password } = props;
