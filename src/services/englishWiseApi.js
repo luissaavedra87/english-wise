@@ -1,4 +1,4 @@
-const baseUrl = 'https://nriqu322-english-wise-netlify.net';
+const baseUrl = 'https://english-wise-api.herokuapp.com/';
 
 const userLogin = async props => {
   const { email, password } = props;
