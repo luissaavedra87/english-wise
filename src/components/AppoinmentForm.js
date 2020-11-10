@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { createAppoinment } from '../services/englishWiseApi';
@@ -8,6 +9,7 @@ const AppoinmentForm = props => {
   const [appoinmentDate, setAppoinmentDate] = useState();
   const [appoinmentTime, setAppoinmentTime] = useState();
 
+  const history = useHistory();
   const { currentTeacherId, user } = props;
 
   const handleChange = e => {
@@ -35,6 +37,7 @@ const AppoinmentForm = props => {
         if (data.error) {
           toast.error(data.error);
         } else {
+          history.push('/schedule');
           toast.success('Appoinment created');
         }
       });

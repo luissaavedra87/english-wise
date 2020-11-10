@@ -123,6 +123,7 @@ class App extends React.Component {
             {sidebarOpen ? <SideBar close={this.handleClose} sidebar="sidebar" /> : ''}
             <UserSchedule />
           </Route>
+          <Redirect to="/" />
         </Switch>
       </Router>
     );
