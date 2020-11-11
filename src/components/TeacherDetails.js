@@ -10,7 +10,7 @@ const TeacherDetails = props => {
   const { teachers } = props;
   const currentTeacher = teachers[id];
 
-  if (currentTeacher) {
+  if (currentTeacher && currentTeacher !== null) {
     return (
       <div className="teacher-details-container">
         <div className="container-back">
