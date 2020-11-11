@@ -10,6 +10,7 @@ const TeacherDetails = props => {
   const { teachers } = props;
   const currentTeacher = teachers[id];
 
+  console.log(currentTeacher);
   if (currentTeacher && currentTeacher !== null && currentTeacher !== undefined && currentTeacher !== 'undefined') {
     return (
       <div className="teacher-details-container">
