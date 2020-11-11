@@ -8,9 +8,18 @@ If you feel curious you can check the [project requirements](https://www.notion.
 
 ## Live Version
 
+### User Test
+
+* email: test
+* password: 123456
+
 * [See live version here](https://nriqu322-english-wise.netlify.app/)
 
-<img src="src/resources/screenshot.png" width=1000 />
+<img src="src/resources/screenshot-login.png" width=768 />
+<img src="src/resources/screenshot-home.png" width=768 />
+<img src="src/resources/screenshot-teachers.png" width=768 />
+<img src="src/resources/screenshot-schedule.png" width=768 />
+<img src="src/resources/screenshot-details.png" width=768 />
 
 ## How to Run locally
 
