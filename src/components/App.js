@@ -20,13 +20,10 @@ import UserSchedule from './userSchedule';
 import SideBar from './SideBar';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sidebarOpen: false,
-    };
-    this.openHandler = this.openHandler.bind(this);
-  }
+  // eslint-disable-next-line react/state-in-constructor
+  state = {
+    sidebarOpen: false,
+  };
 
   componentDidMount() {
     const { user, setUser } = this.props;

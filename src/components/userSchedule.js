@@ -23,7 +23,7 @@ const UserSchedule = () => {
           }
         });
     }
-  }, [user]);
+  }, [user, dispatch]);
 
   if (appoinments && appoinmentArray.length === 0) {
     appoinmentArray = appoinments
